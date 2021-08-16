@@ -1,4 +1,5 @@
 {
   "title": "Upsplash API Search",
-  "placholder": "Enter search term"
+  "placholder": "Enter search term",
+  "results": "results for"
 }
