@@ -1,5 +1,5 @@
 import React from "react";
-import { IconType } from "../enums/Index";
+import { IconType, BreakPoint } from "../enums/Index";
 import Anchor from "./Anchor";
 
 interface ImageProps {
@@ -19,7 +19,7 @@ const Image: React.FC<ImageProps> = ({
 }) => (
   <React.Fragment>
     <picture>
-      <source srcSet={imageDesktop} media="(min-width: 768px)" />
+      <source srcSet={imageDesktop} media={BreakPoint.TABLET} />
       <img src={imageMobile} alt={description} />
     </picture>
     <span className="imageAuthor">{author}</span>

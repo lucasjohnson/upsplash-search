@@ -1,4 +1,5 @@
 import React from "react";
+import Copy from "../json/copy.json";
 
 interface Props {
   setKeyDown: Function;
@@ -9,7 +10,7 @@ const Input: React.FC<Props> = ({ setKeyDown }) => (
     <input
       className="imageSearch"
       type="text"
-      placeholder="Enter search term"
+      placeholder={Copy.placholder}
       onKeyDown={event => setKeyDown(event)}
       autoComplete="off"
     />

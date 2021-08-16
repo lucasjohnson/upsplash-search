@@ -3,6 +3,7 @@ import axios from "axios";
 import { KeyCode } from "../enums/Index";
 import Input from "./Input";
 import Image from "./Image";
+import Copy from "../json/copy.json";
 
 const App: React.FC = () => {
   const [images, setImages] = useState<Array<object>>([{}]);
@@ -36,6 +37,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="Header">
+        <h1 className="title">{Copy.title}</h1>
         <Input setKeyDown={handleImageSearch} />
       </header>
       <main className="Main">
