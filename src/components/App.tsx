@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { KeyCode, IconType } from "../enums/Index";
+import { KeyCode } from "../enums/Index";
 import Input from "./Input";
-import Anchor from "./Anchor";
+import Image from "./Image";
 
 const App: React.FC = () => {
-  const [data, setData] = useState<Array<object>>([{}]);
+  const [images, setImages] = useState<Array<object>>([{}]);
   const [query, setQuery] = useState<string>("");
   const queryUrl: string = `https://api.unsplash.com/search/photos?client_id=${process.env.REACT_APP_CLIENT_ID}&query=${query}&page=1&per_page=20`;
 
@@ -15,7 +15,7 @@ const App: React.FC = () => {
         headers: {}
       })
       .then(response => {
-        setData(response.data.results);
+        setImages(response.data.results);
       })
       .catch(error => {
         console.warn(error);
@@ -25,7 +25,7 @@ const App: React.FC = () => {
   const handleImageSearch = (event: KeyboardEvent): void => {
     if (event?.keyCode === KeyCode.ENTER) {
       setQuery((event.target as HTMLInputElement).value);
-      setData([{}]);
+      setImages([{}]);
     }
   };
 
@@ -36,33 +36,20 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="Header">
-        <Input
-          setKeyDown={handleImageSearch}
-          placeholder="Enter search term"
-          className="imageSearch"
-        />
+        <Input setKeyDown={handleImageSearch} />
       </header>
       <main className="Main">
-        {data.length > 1 && (
+        {images.length > 1 && (
           <ul className="imageItems">
-            {data.map((image: any, key: number) => (
+            {images.map((image: any, key: number) => (
               <li className="imageItem" key={key}>
-                <picture>
-                  <source
-                    srcSet={image.urls.regular}
-                    media="(min-width: 768px)"
-                  />
-                  <img src={image.urls.small} alt={image.alt_description} />
-                </picture>
-                <span className="imageAuthor">{image.user.name}</span>
-                <nav className="imageNav">
-                  <Anchor
-                    className="imageNavLink"
-                    title="Image"
-                    icon={IconType.EXTERNAL}
-                    url={image.links.html}
-                  />
-                </nav>
+                <Image
+                  imageDesktop={image.urls.regular}
+                  imageMobile={image.urls.small}
+                  description={image.alt_description}
+                  author={image.user.name}
+                  url={image.links.html}
+                />
               </li>
             ))}
           </ul>

@@ -2,16 +2,14 @@ import React from "react";
 
 interface Props {
   setKeyDown: Function;
-  placeholder: string;
-  className: string;
 }
 
-const Input: React.FC<Props> = ({ setKeyDown, placeholder, className }) => (
+const Input: React.FC<Props> = ({ setKeyDown }) => (
   <React.Fragment>
     <input
-      className={className}
+      className="imageSearch"
       type="text"
-      placeholder={placeholder}
+      placeholder="Enter search term"
       onKeyDown={event => setKeyDown(event)}
       autoComplete="off"
     />
