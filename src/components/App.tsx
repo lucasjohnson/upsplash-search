@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { KeyCode } from "../enums/Index";
+import { KeyCode, IconType } from "../enums/Index";
 import Input from "./Input";
+import Anchor from "./Anchor";
 
 const App: React.FC = () => {
   const [data, setData] = useState<Array<object>>([{}]);
@@ -34,14 +35,18 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <header>
-        <Input setKeyDown={handleImageSearch} placeholder="Enter search term" />
+      <header className="Header">
+        <Input
+          setKeyDown={handleImageSearch}
+          placeholder="Enter search term"
+          className="imageSearch"
+        />
       </header>
-      <main>
+      <main className="Main">
         {data.length > 1 && (
-          <ul>
+          <ul className="imageItems">
             {data.map((image: any, key: number) => (
-              <li key={key}>
+              <li className="imageItem" key={key}>
                 <picture>
                   <source
                     srcSet={image.urls.regular}
@@ -49,13 +54,21 @@ const App: React.FC = () => {
                   />
                   <img src={image.urls.small} alt={image.alt_description} />
                 </picture>
-                <span>{image.user.name}</span>
+                <span className="imageAuthor">{image.user.name}</span>
+                <nav className="imageNav">
+                  <Anchor
+                    className="imageNavLink"
+                    title="Image"
+                    icon={IconType.EXTERNAL}
+                    url={image.links.html}
+                  />
+                </nav>
               </li>
             ))}
           </ul>
         )}
       </main>
-      <footer></footer>
+      <footer className="Footer"></footer>
     </div>
   );
 };
