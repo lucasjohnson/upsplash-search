@@ -6,22 +6,14 @@ import Image from "./Image";
 import QueryElement from "../helpers/QueryElement";
 
 interface ImageItemProps {
-  imageDesktop: string;
-  imageMobile: string;
-  description: string;
-  author: string;
-  url: string;
+  image: any;
+  key: number;
 }
 
-const ImageItem: React.FC<ImageItemProps> = ({
-  imageDesktop,
-  imageMobile,
-  description,
-  author,
-  url
-}) => {
+const ImageItem: React.FC<ImageItemProps> = ({ image, key }) => {
   const [isOpen, toggleIsOpen] = useState<boolean>(false);
   const body = QueryElement.selector("body");
+
   const toggleModal = (): void => {
     toggleIsOpen(!isOpen);
 
@@ -30,13 +22,25 @@ const ImageItem: React.FC<ImageItemProps> = ({
       : body?.classList.remove("isFixed");
   };
 
-  const image = {
+  const portalImage = {
     hidden: { opacity: 0 },
     show: { opacity: 1 }
   };
 
+  const imageItem = {
+    hidden: { opacity: 0, y: "10px" },
+    show: { opacity: 1, y: 0 }
+  };
+
+  const { alt_description: description } = image;
+  const { regular: imageDesktop, small: imageMobile } = image.urls;
+  const { name: author } = image.user;
+  const { html: url } = image.links;
+
+  console.log(image.urls);
+
   return (
-    <React.Fragment>
+    <motion.li className="image-item" key={key} variants={imageItem}>
       <button
         className="image-trigger"
         aria-haspopup="true"
@@ -54,7 +58,7 @@ const ImageItem: React.FC<ImageItemProps> = ({
       {isOpen && (
         <Portal>
           <Modal isOpen={isOpen} toggleModal={toggleModal}>
-            <motion.div variants={image}>
+            <motion.div variants={portalImage}>
               <Image
                 imageDesktop={imageDesktop}
                 imageMobile={imageMobile}
@@ -65,7 +69,7 @@ const ImageItem: React.FC<ImageItemProps> = ({
           </Modal>
         </Portal>
       )}
-    </React.Fragment>
+    </motion.li>
   );
 };
 

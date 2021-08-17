@@ -19,16 +19,16 @@ const Image: React.FC<ImageProps> = ({
 }) => {
   return (
     <React.Fragment>
-      <picture>
+      <picture className="image">
         <source srcSet={imageDesktop} media={BreakPoint.TABLET} />
-        <img className="image" src={imageMobile} alt={description} />
+        <img className="image-element" src={imageMobile} alt={description} />
       </picture>
       {url && (
         <React.Fragment>
-          <span className="imageAuthor">{author}</span>
-          <nav className="imageNav">
+          <span className="image-author">{author}</span>
+          <nav className="image-navigation">
             <Anchor
-              className="imageNavLink"
+              className="image-link"
               title={description}
               icon={IconType.EXTERNAL}
               url={url}
