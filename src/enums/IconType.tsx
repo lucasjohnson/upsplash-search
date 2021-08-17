@@ -1,3 +1,4 @@
 export enum IconType {
-  EXTERNAL = "external"
+  EXTERNAL = "external",
+  GITHUB = "github"
 }

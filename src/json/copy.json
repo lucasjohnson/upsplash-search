@@ -1,5 +1,9 @@
 {
-  "title": "Upsplash API Search",
+  "title": "Upsplash Search",
   "placholder": "Enter search term",
-  "results": "results for"
+  "results": "results for",
+  "back": "Back to the top",
+  "githubTitle": "Lucas' GitHub profile",
+  "githubUrl": "https://github.com/lucasjohnson",
+  "closeButton": "Close button"
 }
