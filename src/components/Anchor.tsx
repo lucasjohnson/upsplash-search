@@ -1,10 +1,11 @@
 import React from "react";
 import { FiExternalLink } from "react-icons/fi";
+import { GoMarkGithub } from "react-icons/go";
 import { IconType } from "../enums/Index";
 
 interface AnchorProps {
   title: string;
-  icon: IconType.EXTERNAL;
+  icon: IconType.EXTERNAL | IconType.GITHUB;
   className: string;
   url: string;
 }
@@ -17,7 +18,7 @@ const Anchor: React.FC<AnchorProps> = ({ title, icon, className, url }) => (
     target="_blank"
     rel="noopener noreferrer"
   >
-    <FiExternalLink />
+    {IconType.EXTERNAL ? <FiExternalLink /> : <GoMarkGithub />}
   </a>
 );
 

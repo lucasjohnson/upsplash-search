@@ -1,11 +1,11 @@
 import React from "react";
 import Copy from "../json/copy.json";
 
-interface Props {
+interface InputProps {
   setKeyDown: Function;
 }
 
-const Input: React.FC<Props> = ({ setKeyDown }) => (
+const Input: React.FC<InputProps> = ({ setKeyDown }) => (
   <React.Fragment>
     <input
       className="imageSearch"
