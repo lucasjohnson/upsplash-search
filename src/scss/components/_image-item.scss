@@ -1,0 +1,41 @@
+.image {
+	&-item {
+		height: 260px;
+		display: inline-block;
+		overflow: hidden;
+		position: relative;
+
+		@include respond-to('TABLET') {
+			border-radius: $border-radius;
+		}
+	}
+
+	&-trigger {
+		border: 0;
+		cursor: pointer;
+		-webkit-user-select: none;
+		user-select: none;
+		white-space: nowrap;
+		position: relative;
+		overflow: hidden;
+		background-color: transparent;
+		padding: 0;
+		height: 100%;
+		width: 100%;
+
+		.image {
+			transform: scale(1);
+			opacity: 1;
+			transition: transform $animation-duration $animation-timing, opacity $animation-duration $animation-timing;
+		}
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				.image {
+					transform: scale(1.1);
+					opacity: 0.8;
+				}
+			}
+	  }
+	}
+}

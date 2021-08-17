@@ -1,0 +1,8 @@
+.image-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: $spacing;
+  padding: $spacing 0;
+  margin: 0;
+  overflow: hidden;
+}

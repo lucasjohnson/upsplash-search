@@ -1,0 +1,39 @@
+@mixin background($color) {
+	background: $color;
+	background-color: $color;
+}
+
+@mixin center($position) {
+	position: absolute;
+
+	@if $position == 'VERTICAL' {
+		top: 50%;
+		transform: translateY(-50%);
+	} @else if $position == 'HORIZONTAL' {
+		left: 50%;
+		transform: translateX(-50%);
+	} @else if $position == 'BOTH' {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@mixin respond-to($size) {
+	@if $size == 'TABLET' {
+		@media screen and (min-width: $breakpoint-tablet) {
+			@content;
+		}
+	} @else if $size == 'DESKTOP' {
+		@media screen and (min-width: $breakpoint-desktop) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}

@@ -1,0 +1,22 @@
+html {
+  @include background($viewport-background-color);
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+svg {
+  pointer-events: none;
+}
+
+body {
+  overflow: visible;
+
+  &.isFixed {
+    overflow: hidden;
+  }
+}

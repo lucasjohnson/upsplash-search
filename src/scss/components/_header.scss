@@ -1,0 +1,15 @@
+.header {
+  text-align: center;
+
+	&-title {
+		font-size: 36px;
+		font-weight: $font-weight-bold;
+		padding: 0 $container-padding;
+		margin: $spacing 0 $spacing * 2;
+
+		@include respond-to('TABLET') {
+			font-size: 74px;
+			padding: 0;
+		}		
+	}
+}
