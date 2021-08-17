@@ -3,33 +3,29 @@ import { motion } from "framer-motion";
 import Portal from "./Portal";
 import Modal from "./Modal";
 import Image from "./Image";
-import QueryElement from "../helpers/QueryElement";
+import LockViewport from "../helpers/LockViewport";
 
 interface ImageItemProps {
   image: any;
-  key: number;
+  index: number;
 }
 
-const ImageItem: React.FC<ImageItemProps> = ({ image, key }) => {
+const ImageItem: React.FC<ImageItemProps> = ({ image, index }) => {
   const [isOpen, toggleIsOpen] = useState<boolean>(false);
-  const body = QueryElement.selector("body");
 
   const toggleModal = (): void => {
     toggleIsOpen(!isOpen);
-
-    !isOpen
-      ? body?.classList.add("isFixed")
-      : body?.classList.remove("isFixed");
+    LockViewport.modal(isOpen);
   };
 
-  const portalImage = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1 }
-  };
-
-  const imageItem = {
+  const motionItem = {
     hidden: { opacity: 0, y: "10px" },
     show: { opacity: 1, y: 0 }
+  };
+
+  const motionImage = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 }
   };
 
   const { alt_description: description } = image;
@@ -37,10 +33,8 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, key }) => {
   const { name: author } = image.user;
   const { html: url } = image.links;
 
-  console.log(image.urls);
-
   return (
-    <motion.li className="image-item" key={key} variants={imageItem}>
+    <motion.li className="image-item" key={index} variants={motionItem}>
       <button
         className="image-trigger"
         aria-haspopup="true"
@@ -58,7 +52,7 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, key }) => {
       {isOpen && (
         <Portal>
           <Modal isOpen={isOpen} toggleModal={toggleModal}>
-            <motion.div variants={portalImage}>
+            <motion.div variants={motionImage}>
               <Image
                 imageDesktop={imageDesktop}
                 imageMobile={imageMobile}

@@ -4,6 +4,7 @@ import { KeyCode } from "../enums/Index";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
+import BuildQuery from "../helpers/BuildQuery";
 
 const App: React.FC = () => {
   const [images, setImages] = useState<Array<object>>([]);
@@ -11,7 +12,7 @@ const App: React.FC = () => {
   const [results, setResults] = useState<number>(0);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
-  const queryUrl: string = `https://api.unsplash.com/search/photos?client_id=${process.env.REACT_APP_CLIENT_ID}&query=${query}&page=${page}&per_page=20`;
+  const queryUrl: string = BuildQuery.upsplashApi(query, page);
 
   const handleFetchImages = () => {
     axios
