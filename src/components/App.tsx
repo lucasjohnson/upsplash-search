@@ -32,11 +32,14 @@ const App: React.FC = () => {
   };
 
   const handleImageSearch = (event: KeyboardEvent): void => {
-    if (event?.keyCode === KeyCode.ENTER) {
+    if (
+      event?.keyCode === KeyCode.ENTER &&
+      (event.target as HTMLInputElement).value !== query
+    ) {
       setPage(1);
-      setQuery((event.target as HTMLInputElement).value);
       setImages([]);
       setResults(0);
+      setQuery((event.target as HTMLInputElement).value);
     }
   };
 
