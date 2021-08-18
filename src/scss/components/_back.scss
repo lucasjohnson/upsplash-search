@@ -1,0 +1,27 @@
+.back-button {
+  @include size(50px, 50px);
+
+  color: $white;
+  background-color: $black;
+  padding: $spacing /2;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  visibility: visible;
+  transition: opacity $animation-duration $animation-timing;
+  opacity: 1;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  svg {
+    @include size(30px, 30px);
+  }
+
+  &[aria-hidden="false"] {
+    visibility: hidden;
+  }
+}

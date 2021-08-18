@@ -19,6 +19,18 @@
 	}
 }
 
+@mixin centerFlex($position) {
+  display: flex;
+  @if $position == "VERTICAL" {
+    align-items: center;
+  } @else if $position == "HORIZONTAL" {
+    justify-content: center;
+  } @else if $position == "BOTH" {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 @mixin respond-to($size) {
 	@if $size == 'TABLET' {
 		@media screen and (min-width: $breakpoint-tablet) {

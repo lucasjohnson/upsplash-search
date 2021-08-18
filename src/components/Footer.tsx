@@ -6,13 +6,15 @@ import Copy from "../json/copy.json";
 
 const Footer: React.FC = () => (
   <footer className="footer">
-    <Back />
-    <Anchor
-      title={Copy.githubTitle}
-      icon={IconType.GITHUB}
-      className="footerIcon"
-      url={Copy.githubUrl}
-    />
+    <nav className="footer-navigation">
+      <Back />
+      <Anchor
+        title={Copy.githubTitle}
+        icon={IconType.GITHUB}
+        className="footer-icon"
+        url={Copy.githubUrl}
+      />
+    </nav>
   </footer>
 );
 

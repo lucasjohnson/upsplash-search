@@ -18,7 +18,7 @@ const Anchor: React.FC<AnchorProps> = ({ title, icon, className, url }) => (
     target="_blank"
     rel="noopener noreferrer"
   >
-    {IconType.EXTERNAL ? <FiExternalLink /> : <GoMarkGithub />}
+    {icon === IconType.EXTERNAL ? <FiExternalLink /> : <GoMarkGithub />}
   </a>
 );
 

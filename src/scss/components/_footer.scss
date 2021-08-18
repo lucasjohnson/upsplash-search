@@ -1,0 +1,26 @@
+.footer {
+  width: 100%;
+  background-color: $white;
+  position: fixed;
+
+  &-navigation {
+    @include centerFlex("VERTICAL");
+
+    width: 100%;
+    padding: $spacing $container-padding;
+    margin: 0 auto;
+    justify-content: space-between;
+
+    @include respond-to("DESKTOP") {
+      max-width: $container-max-width;
+    }
+  }
+
+  &-icon {
+    color: $black;
+
+    svg {
+      @include size(30px, 30px);
+    }
+  }
+}
