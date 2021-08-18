@@ -7,7 +7,7 @@
     object-fit: cover;
 
   }
-  
+
   &-author {
     color: $white;
     font-size: $font-size-small;
@@ -19,20 +19,18 @@
     background-color: rgba($black, 0.6);
   }
 
-  &-navigation {
+  &-link {
+    color: $white;
+    opacity: 1;
+    transition: opacity $animation-duration $animation-timing;
+
     height: 32px;
     position: absolute;
     right: 8px;
     top: 8px;
     background-color: rgba($black, 0.6);
-    padding: 8px;
+      padding: 8px;
     border-radius: 50%;
-  }
-
-  &-link {
-    color: $white;
-    opacity: 1;
-    transition: opacity $animation-duration $animation-timing;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {

@@ -51,14 +51,12 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, index }) => {
           url={url}
         />
       </button>
-      <nav className="image-navigation">
-        <Anchor
-          className="image-link"
-          title={description}
-          icon={IconType.EXTERNAL}
-          url={url}
-        />
-      </nav>
+      <Anchor
+        className="image-link"
+        title={description}
+        icon={IconType.EXTERNAL}
+        url={url}
+      />
       {isOpen && (
         <Portal>
           <Modal isOpen={isOpen} toggleModal={toggleModal}>
