@@ -15,7 +15,7 @@ interface ImageItemProps {
 const ImageItem: React.FC<ImageItemProps> = ({ image, index }) => {
   const [isOpen, toggleIsOpen] = useState<boolean>(false);
 
-  const toggleModal = (event: MouseEvent): void => {
+  const toggleModal = (): void => {
     toggleIsOpen(!isOpen);
     LockViewport.modal(isOpen);
   };
@@ -41,7 +41,7 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, index }) => {
         className="image-trigger"
         aria-haspopup="true"
         aria-expanded={isOpen}
-        onClick={event => toggleModal(event)}
+        onClick={toggleModal}
       >
         <Image
           imageDesktop={imageDesktop}
