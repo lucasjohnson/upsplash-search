@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { IconType } from "../enums/Index";
 import Portal from "./Portal";
 import Modal from "./Modal";
 import Image from "./Image";
+import Anchor from "./Anchor";
 import LockViewport from "../helpers/LockViewport";
 
 interface ImageItemProps {
@@ -13,7 +15,7 @@ interface ImageItemProps {
 const ImageItem: React.FC<ImageItemProps> = ({ image, index }) => {
   const [isOpen, toggleIsOpen] = useState<boolean>(false);
 
-  const toggleModal = (): void => {
+  const toggleModal = (event: MouseEvent): void => {
     toggleIsOpen(!isOpen);
     LockViewport.modal(isOpen);
   };
@@ -39,7 +41,7 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, index }) => {
         className="image-trigger"
         aria-haspopup="true"
         aria-expanded={isOpen}
-        onClick={toggleModal}
+        onClick={event => toggleModal(event)}
       >
         <Image
           imageDesktop={imageDesktop}
@@ -49,6 +51,14 @@ const ImageItem: React.FC<ImageItemProps> = ({ image, index }) => {
           url={url}
         />
       </button>
+      <nav className="image-navigation">
+        <Anchor
+          className="image-link"
+          title={description}
+          icon={IconType.EXTERNAL}
+          url={url}
+        />
+      </nav>
       {isOpen && (
         <Portal>
           <Modal isOpen={isOpen} toggleModal={toggleModal}>
