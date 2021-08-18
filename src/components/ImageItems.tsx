@@ -40,7 +40,7 @@ const ImageItems: React.FC<ImageItemsProps> = ({
           animate="show"
         >
           {images.map((image: any, index: number) => (
-            <ImageItem image={image} index={index} />
+            <ImageItem image={image} index={index} key={index} />
           ))}
         </motion.ul>
       </React.Fragment>
