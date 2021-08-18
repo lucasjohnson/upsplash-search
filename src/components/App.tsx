@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const queryUrl: string = BuildQuery.upsplashApi(query, page);
 
-  const handleFetchImages = () => {
+  const handleFetchImages = (): void => {
     axios
       .get(queryUrl, {
         headers: {}

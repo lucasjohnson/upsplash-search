@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import * as serviceWorker from "./serviceWorker";
 import App from "./components/App";
-import 'normalize.css';
+import "normalize.css";
 import "./scss/global.scss";
 
 ReactDOM.render(
@@ -10,3 +11,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+serviceWorker.register();
